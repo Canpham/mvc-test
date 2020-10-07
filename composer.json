@@ -1,0 +1,13 @@
+{
+    "name": "web3013/mvc",
+    "require": {
+        "illuminate/database": "^7.28",
+        "illuminate/events": "^7.28",
+        "jenssegers/blade": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
