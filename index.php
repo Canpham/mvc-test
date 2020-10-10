@@ -7,8 +7,6 @@ require_once './config/db.php';
 use App\Controllers\HomeController;
 use App\Controllers\CartController;
 use App\Controllers\ProductController;
-// Đọc về eloquent model
-// https://laravel.com/docs/8.x/eloquent#retrieving-single-models
 
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 switch ($url) {
@@ -16,15 +14,29 @@ switch ($url) {
         $ctr = new HomeController();
         $ctr->index();
         break;
-    case 'san-pham':
-        // hiển thị danh sách sản phẩm
+    case 'add-product':
         $ctr = new ProductController();
-        $ctr->index();
+        $ctr->addproduct();
         break;
-    case 'gio-hang':
-        $ctr = new CartController();
-        $ctr->index();
+    case 'remove-product':
+        $ctr = new ProductController();
+        $id = isset($_GET['id']) ? $_GET['id'] : -1;
+        $ctr->remove($id);
         break;
+    case 'save-add':
+        $ctr = new ProductController();
+        $ctr->saveAddproduct();
+        break;
+    case 'edit-product':
+        $ctr = new ProductController();
+        $id = isset($_GET['id']) ? $_GET['id'] : -1;
+        $ctr->editproduct($id);
+        break;
+    case 'save-edit':
+        $ctr = new ProductController();
+        $id = isset($_POST['id']) ? $_POST['id'] : -1;
+        $ctr->saveEditproduct($id);
+
     default:
         # code...
         break;
