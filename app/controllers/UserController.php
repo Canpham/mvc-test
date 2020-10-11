@@ -16,6 +16,7 @@ class UserController extends BaseController{
         $model = User::find($id);
         // var_dump($model);
         // die;
+        // die;
         if($model){
             $model->delete();
         }
