@@ -79,10 +79,5 @@ class ProductController extends BaseController{
 
     }
 
-
-
-
-
-
 } 
 ?>

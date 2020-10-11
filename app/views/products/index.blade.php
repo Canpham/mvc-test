@@ -19,7 +19,7 @@
                 <tr>
                   <td>{{$item->id}}</td>
                   <td>{{$item->name}}</td>
-                  <td><img style="width: 40%;" src="{{BASE_URL. 'public/'  . $item->image}}" alt=""></td>
+                  <td><img style="width: 40%; height: 70%;" src="{{BASE_URL. 'public/'  . $item->image}}" alt=""></td>
                   <td>
                     @php
                         $parent = $item->category;
@@ -47,8 +47,8 @@
   function confirmRemove(url)
   {
     swal({
-  title: "Are you sure?",
-  text: "Once deleted, you will not be able to recover this imaginary file!",
+  title: "Bạn có chắc muốn xóa?",
+  text: "Sau khi xóa, bạn sẽ không thể khôi phục sản phẩm này!",
   icon: "warning",
   buttons: true,
   dangerMode: true,
@@ -56,11 +56,11 @@
 .then((willDelete) => {
   if (willDelete) {
     window.location.href = url; 
-    swal("Poof! Your imaginary file has been deleted!", {
+    swal("Sản phẩm đã được xóa thành công!", {
       icon: "success",
     });
   } else {
-    swal("Your imaginary file is safe!");
+    swal("Sản phẩm đã an toàn!");
   }
   });
 
