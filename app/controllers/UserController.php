@@ -41,8 +41,8 @@ class UserController extends BaseController{
             $data['avatar'] = $imageName;
             $data['password'] = $passwordhash;
             User::create($data);
-            var_dump($data['role']);
-            die;
+            // var_dump($data['role']);
+            // die; 
             
         }else{
 
@@ -56,7 +56,19 @@ class UserController extends BaseController{
 	public function edituser($id)
 	{
 		$model = User::find($id);
-		$this->render('users.edit-user', compact('model'));
+		
+		$role = [
+                [
+                    'value' => 1,
+                    'name' => 'Administrator'
+                ],
+                [
+                    'value' => 900,
+                    'name' => 'User'
+                ]
+            ];
+
+         $this->render('users.edit-user', compact('model', 'role'));
 
 	}
 
@@ -74,8 +86,8 @@ class UserController extends BaseController{
             
         }
         $model->update($data);
-        var_dump($model);
-        die;
+        // var_dump($model);
+        // die;
 
         header('location: ' . BASE_URL .'show-user');
         die;

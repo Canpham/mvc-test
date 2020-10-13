@@ -22,15 +22,9 @@
   <label class="col-md-4 control-label" for="product_categorie">ROLE</label>
   <div class="col-md-4">
     <select id="product_categorie" name="role" class="form-control">
-                  @php
-                    $u = $model->role;
-                    if ($u == 1) {
-                    echo "<span>Admin</span>";
-                  }
-                    if ($u == 900) {
-                    echo " <span>User</span>";
-                  }
-                  @endphp
+                   @foreach($role as $value)
+                                <option value={{$value['value']}} {{$model->role == $value['value'] ? 'selected' : ''}} >{{$value['name']}}</option>
+                   @endforeach
     </select>
   </div>
 </div>

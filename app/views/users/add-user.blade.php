@@ -27,11 +27,8 @@
   <label class="col-md-4 control-label" for="product_categorie">ROLE</label>
   <div class="col-md-4">
     <select id="product_categorie" name="role" class="form-control">
-                    @foreach ($model as $ca)
-                        <option value="{{$ca->id}}">
-                          {{$ca->role}}
-                        </option>
-                    @endforeach
+                        <option value=1>Administrator</option>
+                        <option value=900>User</option>
     </select>
   </div>
 </div>

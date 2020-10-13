@@ -24,7 +24,7 @@
                     @php
                     $u = $item->role;
                     if ($u == 1) {
-                    echo "<span>Admin</span>";
+                    echo "<span>Administrator</span>";
                   }
                     if ($u == 900) {
                    echo " <span>User</span>";
