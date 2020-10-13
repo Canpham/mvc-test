@@ -32,18 +32,51 @@ class UserController extends BaseController{
 	{
 		$data = $_POST;
 		// var_dump($data); die;
-		$imageName =   uniqid() . '_' . $_FILES['image']['name'] ;
-        $imgTmp = $_FILES['image']['tmp_name'];
+		$imageName =   uniqid() . '_' . $_FILES['avatar']['name'] ;
+        $imgTmp = $_FILES['avatar']['tmp_name'];
         $uploadUrl = getcwd() . '\public';
+        $password = $_POST ['password'];
+        $passwordhash = password_hash($password, PASSWORD_DEFAULT);
         if(move_uploaded_file($imgTmp, $uploadUrl . '/' . $imageName)) {
-            $data['image'] = $imageName;
+            $data['avatar'] = $imageName;
+            $data['password'] = $passwordhash;
             User::create($data);
+            var_dump($data['role']);
+            die;
             
         }else{
 
             echo "loi k upload dc anh";
         }
               // var_dump($data); die;
+        header('location: ' . BASE_URL .'show-user');
+        die;
+	}
+
+	public function edituser($id)
+	{
+		$model = User::find($id);
+		$this->render('users.edit-user', compact('model'));
+
+	}
+
+	public function saveEdituser($id)
+	{
+		$data = $_POST;
+		$model = User::find($id);
+		$imageName =   uniqid() . '_' . $_FILES['avatar']['name'] ;
+        $imgTmp = $_FILES['avatar']['tmp_name'];
+        $uploadUrl = getcwd() . '\public';
+        if(move_uploaded_file($imgTmp, $uploadUrl . '/' . $imageName)) {
+            $data['avatar'] = $imageName;
+            // var_dump($imgTmp);
+            // die;
+            
+        }
+        $model->update($data);
+        var_dump($model);
+        die;
+
         header('location: ' . BASE_URL .'show-user');
         die;
 	}

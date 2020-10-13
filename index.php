@@ -78,7 +78,7 @@ switch ($url) {
     case 'edit-user':
         $ctr = new UserController();
         $id = isset($_GET['id']) ? $_GET['id'] : -1;
-        $ctr->editcate($id);
+        $ctr->edituser($id);
         break;
     case 'save-addUser':
         $ctr = new UserController();

@@ -1,40 +1,41 @@
 @extends('_share.home')
-@section('title', 'Thêm tài khoản')
+@section('title', 'Sửa tài khoản')
 @section('content')
-<form action="{{ BASE_URL . 'save-addUser'}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ BASE_URL . 'save-editUser'}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 <fieldset>
+<input name ="id" type="hidden" value="{{$model->id}}">
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">USER NAME</label>  
   <div class="col-md-4">
-  <input id="product_name" name="name" placeholder="USER NAME" class="form-control input-md"  type="text">
+  <input id="product_name" name="name" placeholder="USER NAME" class="form-control input-md"  type="text" value="{{$model->name}}">
     
 </div>
 </div>
 <div class="form-group">
   <label class="col-md-4 control-label" for="available_quantity">EMAIL</label>  
   <div class="col-md-4">
-  <input id="available_quantity" name="email" placeholder="EMAIL" class="form-control input-md"  type="text">
+  <input id="available_quantity" name="email" placeholder="EMAIL" class="form-control input-md"  type="text" value="{{$model->email}}">
     
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-4 control-label" for="product_name">PASSWORD</label>  
-  <div class="col-md-4">
-  <input id="product_name" name="password" placeholder="PASSWORD" class="form-control input-md"  type="password">
   </div>
 </div>
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_categorie">ROLE</label>
   <div class="col-md-4">
     <select id="product_categorie" name="role" class="form-control">
-                    @foreach ($model as $ca)
-                        <option value="{{$ca->id}}">
-                          {{$ca->role}}
-                        </option>
-                    @endforeach
+                  @php
+                    $u = $model->role;
+                    if ($u == 1) {
+                    echo "<span>Admin</span>";
+                  }
+                    if ($u == 900) {
+                    echo " <span>User</span>";
+                  }
+                  @endphp
     </select>
   </div>
 </div>
+<img  style="margin-left: 530px; margin-top: 30px;" src="{{BASE_URL . 'public/' .  $model->avatar}}" alt="">
+<br></br>
 <div class="form-group">  
   <label class="col-md-4 control-label" for="filebutton">main_image</label>
   <div class="col-md-4">
