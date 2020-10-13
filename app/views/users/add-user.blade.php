@@ -33,7 +33,7 @@
     </select>
   </div>
 </div>
-<div class="form-group">
+<div class="form-group">  
   <label class="col-md-4 control-label" for="filebutton">main_image</label>
   <div class="col-md-4">
     <input id="filebutton" name="avatar" class="input-file" type="file">

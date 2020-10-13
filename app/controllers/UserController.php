@@ -16,7 +16,6 @@ class UserController extends BaseController{
         $model = User::find($id);
         // var_dump($model);
         // die;
-        // die;
         if($model){
             $model->delete();
         }
@@ -29,6 +28,25 @@ class UserController extends BaseController{
 		$this->render('users.add-user', compact('model'));
 	}
 
+	public function saveAdduser()
+	{
+		$data = $_POST;
+		// var_dump($data); die;
+		$imageName =   uniqid() . '_' . $_FILES['image']['name'] ;
+        $imgTmp = $_FILES['image']['tmp_name'];
+        $uploadUrl = getcwd() . '\public';
+        if(move_uploaded_file($imgTmp, $uploadUrl . '/' . $imageName)) {
+            $data['image'] = $imageName;
+            User::create($data);
+            
+        }else{
+
+            echo "loi k upload dc anh";
+        }
+              // var_dump($data); die;
+        header('location: ' . BASE_URL .'show-user');
+        die;
+	}
 	
 
 
