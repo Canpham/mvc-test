@@ -59,6 +59,7 @@
     window.location.href = url; 
     swal("Tài khoản đã được xóa thành công!", {
       icon: "success",
+      timer: 1500,
     });
   } else {
     swal("Tài khoản đã an toàn!");

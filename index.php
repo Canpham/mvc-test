@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once './config/helpers.php';
 require_once './vendor/autoload.php';
 require_once './config/db.php';
@@ -8,12 +8,25 @@ use App\Controllers\HomeController;
 use App\Controllers\CateController;
 use App\Controllers\ProductController;
 use App\Controllers\UserController;
+use App\Controllers\LoginController;
 
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 switch ($url) {
     case '/':
         $ctr = new HomeController();
         $ctr->index();
+        break;
+    case 'login-form':
+        $ctr = new LoginController();
+        $ctr->loginform();
+        break;
+    case 'post-login':
+        $ctr = new LoginController();
+        $ctr->postlogin();
+        break;
+    case 'log-out':
+        $ctr = new LoginController();
+        $ctr->logout();
         break;
     case 'add-product':
         $ctr = new ProductController();
