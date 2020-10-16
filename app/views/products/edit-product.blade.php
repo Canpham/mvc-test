@@ -1,13 +1,14 @@
 @extends('_share.home')
 @section('title', 'Sửa sản phẩm')
 @section('content')
-<form action="{{ BASE_URL . 'save-edit'}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ BASE_URL . 'save-edit'}}" onsubmit="return validate()" method="post" class="form-horizontal" enctype="multipart/form-data">
 <fieldset>
 <input name ="id" type="hidden" value="<?=$model->id?>">
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
   <div class="col-md-4">
   <input id="product_name" name="name" placeholder="PRODUCT NAME" class="form-control input-md"  type="text" value ="{{$model->name}}">
+  <span id="name_err"></span>
   </div>
 </div>
 
@@ -15,6 +16,7 @@
   <label class="col-md-4 control-label" for="product_name_fr">PRODUCT PRICE</label>
   <div class="col-md-4">
   <input id="product_name_fr" name="price" placeholder="PRODUCT PRICE" class="form-control input-md"  type="text" value = "{{$model->price}}">
+  <span id="price_err"></span>
     
   </div>
 </div>
@@ -38,16 +40,16 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="available_quantity">AVAILABLE DESC</label>  
   <div class="col-md-4">
-  <input id="available_quantity" name="short_desc" placeholder="AVAILABLE DESC" class="form-control input-md"  type="text"  value = "{{$model->short_desc}}">
-    
+  <input id="desc" name="short_desc" placeholder="AVAILABLE DESC" class="form-control input-md"  type="text"  value = "{{$model->short_desc}}">
+  <span id="desc_err"></span>
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_weight">PRODUCT DETAIL</label>  
   <div class="col-md-4">
-  <input id="product_weight" name="detail" placeholder="PRODUCT DETAIL" class="form-control input-md" type="text"  value = "{{$model->detail}}">
-    
+  <input id="detail" name="detail" placeholder="PRODUCT DETAIL" class="form-control input-md" type="text"  value = "{{$model->detail}}">
+  <span id="detail_err"></span>
   </div>
 </div>
 <div class="form-group">
@@ -73,4 +75,53 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 @endsection
+
+
+
+@section('js')
+
+<script type="text/javascript">
+ var check_name = document.getElementById("product_name");
+ var check_price = document.getElementById("product_name_fr");
+ var check_desc = document.getElementById("desc");
+ var check_detail = document.getElementById("detail");
+ function validate()
+ {
+  if (check_name.value == "") 
+  {
+    check_name.style.border = "1px solid red";
+    name_err.innerHTML = "Vui lòng nhập tên sản phẩm";
+    name_err.style.color ="red";
+    return false;
+  }
+  if (check_price.value == "") {
+    check_price.style.border = "1px solid red";
+    price_err.innerHTML = "Vui lòng nhập giá bán";
+    price_err.style.color ="red";
+    return false;
+  } else if (isNaN(check_price.value)==true) {
+    check_price.style.border = "1px solid red";
+    price_err.innerHTML = "Vui lòng nhập số";
+    price_err.style.color ="red";
+    return false;
+  }
+  if (check_desc.value == "") 
+  {
+    check_desc.style.border = "1px solid red";
+    desc_err.innerHTML = "Vui lòng nhập mô tả sản phẩm";
+    desc_err.style.color ="red";
+    return false;
+  }
+  if (check_detail.value == "") 
+  {
+    check_detail.style.border = "1px solid red";
+    detail_err.innerHTML = "Vui lòng nhập chi tiết sản phẩm";
+    detail_err.style.color ="red";
+    return false;
+  }
+
+}
+</script>
+
+@endsection 
 

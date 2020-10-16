@@ -50,6 +50,20 @@ class CateController extends BaseController{
         header('location:' .BASE_URL .'show-cate');
     }
 
+    // public function checkName(){
+    //     $name = trim($_POST['cate_name']);
+    //     $id = $_POST['id'];
+
+    //     if($id){
+    //         $existed = Category::where('name', $name)
+    //         ->where('id', '!=', $id)
+    //         ->count();
+    //     }else{
+    //         $existed = Category::where('name', $name)->count();
+    //     }
+    //     echo $existed == 0 ? "true" : "false";
+    // }
+
 
 
 }

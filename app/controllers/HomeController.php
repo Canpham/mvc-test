@@ -16,5 +16,10 @@ class HomeController extends BaseController{
         $this->render('products.index', compact('products'));
     }
 
+    public function searching()
+    {
+    	
+    }
+
 }
 ?>
