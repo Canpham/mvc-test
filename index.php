@@ -12,10 +12,14 @@ use App\Controllers\LoginController;
 
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 switch ($url) {
+    //index
     case '/':
         $ctr = new HomeController();
         $ctr->index();
         break;
+
+
+    //login
     case 'login-form':
         $ctr = new LoginController();
         $ctr->loginform();
@@ -28,6 +32,8 @@ switch ($url) {
         $ctr = new LoginController();
         $ctr->logout();
         break;
+
+    //products
     case 'add-product':
         $ctr = new ProductController();
         $ctr->addproduct();
@@ -50,6 +56,8 @@ switch ($url) {
         $ctr = new ProductController();
         $id = isset($_POST['id']) ? $_POST['id'] : -1;
         $ctr->saveEditproduct($id);
+
+    //category
     case 'show-cate':
         $ctr = new CateController();
         $ctr->index();
@@ -76,6 +84,9 @@ switch ($url) {
         $id = isset($_POST['id']) ? $_POST['id'] : -1;
         $ctr->saveEditcate($id);
         break;
+
+
+    //User
     case 'show-user':
         $ctr = new UserController();
         $ctr->index();
@@ -101,6 +112,10 @@ switch ($url) {
         $ctr = new UserController();
         $id = isset($_POST['id']) ? $_POST['id'] : -1;
         $ctr->saveEdituser($id);
+        break;
+    case 'check-prodcutname' :
+        $ctr = new ProductController();
+        $ctr->checkprName();
         break;
     default:
         # code...

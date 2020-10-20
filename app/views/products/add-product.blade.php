@@ -1,7 +1,7 @@
 @extends('_share.home')
 @section('title', 'Thêm sản phẩm')
 @section('content')
-<form action="{{ BASE_URL . 'save-add'}}" onsubmit="return validate()" method="post" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ BASE_URL . 'save-add'}}" onsubmit="return validate()" method="post" id="add-product-form" class="form-horizontal" enctype="multipart/form-data">
 <fieldset>
 <div class="form-group">
   <label class="col-md-4 control-label" for="product_name">PRODUCT NAME</label>  
@@ -124,4 +124,52 @@
 }
 </script>
 
+
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+            $('#add-product-form').validate({
+                rules:{
+                    name: {
+                        required: true,
+                        minlength: 2,
+                        remote: {
+                            url: "<?= BASE_URL . 'check-prodcutname'?>",
+                            type: "post",
+                            data: {
+                                name: function() {
+                                    return $( "input[name='name']" ).val();
+                                }
+                            }
+                        }
+                    },
+                    price: {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                    image: {
+                        required: true,
+                        extension: "jpg|png|jpeg|gif"
+                    }
+                },
+                messages:{
+                    name: {
+                        required: "Nhập tên sản phẩm",
+                        minlength: "Tối thiểu 2 ký tự",
+                        remote: "Tên sản phẩm đã tồn tại, vui lòng chọn tên khác"
+                    },
+                    price: {
+                        required: "Nhập giá sản phẩm",
+                        number: "Yêu cầu nhập số",
+                        min: "Giá trị nhỏ nhất là 1"
+                    },
+                    image: {
+                        required: "Hãy chọn ảnh sản phẩm",
+                        extension: "Hãy chọn file định dạng ảnh (jpg|png|jpeg|gif)"
+                    }
+                }
+            });
+        });
+</script>
+ -->
 @endsection 

@@ -64,10 +64,10 @@ class ProductController extends BaseController{
         // var_dump($imgTmp);
         if (strlen($imgTmp)) {
 
-                    $imageName =   uniqid() . '_' . $_FILES['image']['name'] ;
-                    $data['image'] = $imageName;
-                    $uploadUrl = getcwd() . '\public';
-                    move_uploaded_file($imgTmp, $uploadUrl . '/' . $imageName);
+            $imageName =   uniqid() . '_' . $_FILES['image']['name'] ;
+            $data['image'] = $imageName;
+            $uploadUrl = getcwd() . '\public';
+            move_uploaded_file($imgTmp, $uploadUrl . '/' . $imageName);
             
         }
         // var_dump($model);
@@ -77,6 +77,20 @@ class ProductController extends BaseController{
         header('location: ' . BASE_URL);
         die;
 
+    }
+
+    public function checkprName()
+    {
+        $name = $_POST['name'];
+        $id = isset($_POST['id']) ? $_POST['id'] : -1;
+        $queryData = Product::where('name', $name);
+
+        if($id != -1){
+            $queryData->where('id', '!=', $id);
+        }
+        $numberRecord = $queryData->count();
+
+        echo $numberRecord == 0 ? "true" : "false";
     }
 
 } 

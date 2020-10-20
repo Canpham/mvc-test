@@ -1,7 +1,7 @@
 @extends('_share.home')
 @section('title', 'Thêm danh mục')
 @section('content')
-<form action="{{ BASE_URL . 'save-addCate'}}" onsubmit="return validate()" method="post" id="add-cate-form" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{ BASE_URL . 'save-addCate'}}" onsubmit="return validate()" method="post" class="form-horizontal" enctype="multipart/form-data">
   <fieldset>
     <div class="form-group">
       <label class="col-md-4 control-label" for="product_name">CATE NAME</label>  

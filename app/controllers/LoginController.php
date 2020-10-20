@@ -13,7 +13,6 @@ class LoginController extends BaseController{
 
         $user = User::where('email', $email)->first();
         if($user && password_verify($password, $user->password)){
-            # tạo session
             $data = [
                 'id' => $user->id,
                 'email' => $user->email,
@@ -26,7 +25,7 @@ class LoginController extends BaseController{
             die;
         }
 
-        header('location: ' . BASE_URL . 'login?msg=Email hoặc mật khẩu không đúng');
+        header('location: ' . BASE_URL . 'login-form?msg=Email hoặc mật khẩu không đúng');
         die;
     }
 
