@@ -1,4 +1,4 @@
-@extends('_share.home')
+@extends('layouts.main')
 @section('title', 'Đăng nhập')
 @section('content')
 

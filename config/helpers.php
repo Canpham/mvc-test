@@ -1,5 +1,5 @@
 <?php
-const BASE_URL = "http://localhost/web3013/mvc/";
+const BASE_URL = "http://localhost/mvc-thi/";
 
 const AUTH = "AUTH_SESSION";
 ?>

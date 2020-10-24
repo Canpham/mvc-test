@@ -5,11 +5,9 @@ require_once './vendor/autoload.php';
 require_once './config/db.php';
 
 use App\Controllers\HomeController;
-use App\Controllers\CateController;
-use App\Controllers\ProductController;
-use App\Controllers\UserController;
+use App\Controllers\CompanyController;
+use App\Controllers\EmloyeeController;
 use App\Controllers\LoginController;
-
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 switch ($url) {
     //index
@@ -33,89 +31,57 @@ switch ($url) {
         $ctr->logout();
         break;
 
-    //products
-    case 'add-product':
-        $ctr = new ProductController();
-        $ctr->addproduct();
+    //employee
+    case 'add-em':
+        $ctr = new EmloyeeController();
+        $ctr->addem();
         break;
-    case 'remove-product':
-        $ctr = new ProductController();
+    case 'remove-em':
+        $ctr = new EmloyeeController();
         $id = isset($_GET['id']) ? $_GET['id'] : -1;
         $ctr->remove($id);
         break;
     case 'save-add':
-        $ctr = new ProductController();
-        $ctr->saveAddproduct();
+        $ctr = new EmloyeeController();
+        $ctr->saveAddem();
         break;
-    case 'edit-product':
-        $ctr = new ProductController();
+    case 'edit-em':
+        $ctr = new EmloyeeController();
         $id = isset($_GET['id']) ? $_GET['id'] : -1;
-        $ctr->editproduct($id);
+        $ctr->editem($id);
         break;
     case 'save-edit':
-        $ctr = new ProductController();
+        $ctr = new EmloyeeController();
         $id = isset($_POST['id']) ? $_POST['id'] : -1;
-        $ctr->saveEditproduct($id);
+        $ctr->saveEditem($id);
 
-    //category
-    case 'show-cate':
-        $ctr = new CateController();
+    // company
+    case 'show-com':
+        $ctr = new CompanyController();
         $ctr->index();
         break;
-    case 'remove-cate':
-        $ctr = new CateController();
+    case 'remove-com':
+        $ctr = new CompanyController();
         $id = isset($_GET['id']) ? $_GET['id'] : -1;
         $ctr->remove($id);
-    case 'add-cate':
-        $ctr = new CateController();
-        $ctr->addcate();
         break;
-    case 'edit-cate':
-        $ctr = new CateController();
+    case 'add-com':
+        $ctr = new CompanyController();
+        $ctr->addCom();
+        break;
+    case 'saveAdd-com':
+        $ctr = new CompanyController();
+        $ctr->saveAddcom();
+        break;
+    case 'edit-com':
+        $ctr = new CompanyController();
         $id = isset($_GET['id']) ? $_GET['id'] : -1;
-        $ctr->editcate($id);
+        $ctr->editCom($id);
         break;
-    case 'save-addCate':
-        $ctr = new CateController();
-        $ctr->saveAddcate();
-        break;
-    case 'save-editCate':
-        $ctr = new CateController();
+    case 'saveEdit-com':
+        $ctr = new CompanyController();
         $id = isset($_POST['id']) ? $_POST['id'] : -1;
-        $ctr->saveEditcate($id);
-        break;
-
-
-    //User
-    case 'show-user':
-        $ctr = new UserController();
-        $ctr->index();
-        break;
-    case 'remove-user':
-        $ctr = new UserController();
-        $id = isset($_GET['id']) ? $_GET['id'] : -1;
-        $ctr->remove($id);
-    case 'add-user':
-        $ctr = new UserController();
-        $ctr->adduser();
-        break;
-    case 'edit-user':
-        $ctr = new UserController();
-        $id = isset($_GET['id']) ? $_GET['id'] : -1;
-        $ctr->edituser($id);
-        break;
-    case 'save-addUser':
-        $ctr = new UserController();
-        $ctr->saveAdduser();
-        break;
-    case 'save-editUser':
-        $ctr = new UserController();
-        $id = isset($_POST['id']) ? $_POST['id'] : -1;
-        $ctr->saveEdituser($id);
-        break;
-    case 'check-prodcutname' :
-        $ctr = new ProductController();
-        $ctr->checkprName();
+        $ctr->saveEditcom($id);
         break;
     default:
         # code...

@@ -1,25 +1,17 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\User;
+use App\Models\Company;
+use App\Models\Employee;
 
 
 class HomeController extends BaseController{
 
 	public function index(){
 
-        $products = Product::with('category')->get();
+        $ems = Employee::with('company')->get();
         // echo '<pre>' . var_export($products, true) . '</pre>';
-        
-        $this->render('products.index', compact('products'));
+        $this->render('employees.index', compact('ems'));
     }
-
-    public function searching()
-    {
-    	
-    }
-
 }
 ?>
